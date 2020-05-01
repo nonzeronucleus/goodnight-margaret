@@ -96,9 +96,7 @@ jobs:
 
             - run:
                 name: Deploy to S3
-                command: ls public
-
-#                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk" --delete
+                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
 
 #            - run:
 #                name: Enable preview
