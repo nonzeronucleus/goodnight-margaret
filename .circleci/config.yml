@@ -123,7 +123,7 @@ jobs:
 
             - run:
                 name: Deploy to S3
-                command: aws s3 sync build s3://goodnight-margaret.ianplumb.uk --delete
+                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
 
 workflows:
   version: 2
