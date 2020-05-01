@@ -96,7 +96,7 @@ jobs:
 
             - run:
                 name: Deploy to S3
-                command: aws s3 ls --recursive
+                command: ls
 
 #                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk" --delete
 
