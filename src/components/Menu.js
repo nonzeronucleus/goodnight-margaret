@@ -23,6 +23,6 @@ const MenuItem = styled(Link)`
 export default () => (
     <Menu>
         <MenuItem to="/">Music</MenuItem>
-        <MenuItem to="/">About The Band</MenuItem>
+        <MenuItem to="/band">About The Band</MenuItem>
     </Menu>
 );
