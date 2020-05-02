@@ -1,6 +1,7 @@
 import React from "react"
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import breakpoints from '../consts/breakpoints';
 
 
 const Menu = styled.div`
@@ -18,6 +19,51 @@ const Menu = styled.div`
 `;
 
 
+const MenuBacker = styled.div`
+padding:20px;
+/* font-size:30px; */
+width:100%;
+/* /* overflow: hidden; */
+background-color: black;
+/* position: fixed; /* Set the navbar to fixed position */
+/* top: 0; Position the navbar at the top of the page */
+/* width: 100%; Full width */
+opacity: 1;
+/* z-index:90; */ */
+`;
+
+
+
+
+const Menu2 = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+
+  > * {
+    margin-right:12px;
+  }
+
+  > a {
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    padding-right:25px;
+    padding-left:25px;
+    border-right-style: solid;
+    border-right-width:1px;
+
+    @media only screen and (min-width: ${breakpoints.desktop}) {
+      font-size:xx-large;
+    }
+
+
+    :hover {
+      color: red;
+    }
+  }
+`;
+
 const MenuItem = styled(Link)`
     padding:20px;
     text-decoration: none;
@@ -30,8 +76,10 @@ const MenuItem = styled(Link)`
 
 export default () => (
     <Menu>
+      <MenuBacker>
         <MenuItem to="/">Music</MenuItem>
         <MenuItem to="/band">About The Band</MenuItem>
+        </MenuBacker>
     </Menu>
 );
 

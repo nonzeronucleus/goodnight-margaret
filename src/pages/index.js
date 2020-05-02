@@ -5,7 +5,6 @@ import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image';
 
 import Layout from "../components/Layout";
-import Image from "../components/image";
 import SEO from "../components/seo";
 import styled from 'styled-components';
 
@@ -67,11 +66,13 @@ const IndexPage = () => {
       }
   `)
     return (
-    <Layout>
+    <Layout full={true}>
       <SEO title="Home" />
       <BackgroundImage
         fluid={data.bandImage.childImageSharp.fluid}
         >
+
+        {console.log(data.logo.childImageSharp.fluid)}
 
         <StyledImage
           Tag="section"
