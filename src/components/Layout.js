@@ -34,27 +34,27 @@ const Body = styled.div `
     .main {
       margin-left:auto;
       margin-right:auto;
-      max-width: 800px;
+      /* max-width: 800px;
       padding-left:40px;
-      padding-right:40px;
+      padding-right:40px; */
 
-      margin-top:20px;
+      /* margin-top:20px; */
       @media only screen and (min-width: ${breakpoints.tablet}) {
-        padding-left:40px;
-        padding-right:40px;
+        /* padding-left:40px;
+        padding-right:40px; */
 
-        // margin-left:100px;
-        // margin-right:100px;
-        max-width: 800px;
+        /* // margin-left:100px;
+        // margin-right:100px; */
+        /* max-width: 800px; */
       }
 
       @media only screen and (min-width: ${breakpoints.desktop}) {
-        padding-left:40px;
+        /* padding-left:40px;
         padding-right:40px;
 
         // margin-left:100px;
         // margin-right:100px;
-        max-width: 1024px;
+        max-width: 1024px; */
       }
 
     }
@@ -66,38 +66,17 @@ const Body = styled.div `
 `;
 
 
-export default ({ children, hero }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => {
-      const title=_.get(data, 'site.siteMetadata.title','Supergirls Notts');
-      const description=_.get(data, 'site.siteMetadata.description','');
-
-      return (
+export default ({ children }) => (
         <Body>
-          <Helmet>
-            <title>
-              {title}
-            </title>
-            <link rel="canonical" href="http://supergirls-notts.co.uk" />
-            <meta property="og:description" content={description}></meta>
-            <meta name="description" content={description} />
-            <meta property="og:title" content={title}></meta>
-          </Helmet>
-          <div className="header">
+          <title>
+            Title
+          </title>
+        <link rel="canonical" href="http://supergirls-notts.co.uk" />
+      <div className="header">
             <Header />
           </div>
           <div className="body">
             <div className="content">
-              {hero}
               <div className="main">
                 {children}
               </div>
@@ -105,10 +84,72 @@ export default ({ children, hero }) => (
             <div className="footer"><Footer /></div>
           </div>
         </Body>
-      )
-    }}
-  />
-);
+      );
+
+
+      //   <Body>
+      //     <Helmet>
+      //       <title>
+      //         Title
+      //       </title>
+      //       <link rel="canonical" href="http://supergirls-notts.co.uk" />
+      //     </Helmet>
+      //     <div className="header">
+      //       <Header />
+      //     </div>
+      //     <div className="body">
+      //       <div className="content">
+      //         <div className="main">
+      //           {children}
+      //         </div>
+      //       </div>
+      //       <div className="footer"><Footer /></div>
+      //     </div>
+      //   </Body>
+      // );
+
+
+//   <StaticQuery
+//     query={graphql`
+//       query SiteTitleQuery {
+//         site {
+//           siteMetadata {
+//             title
+//           }
+//         }
+//       }
+//     `}
+//     render={data => {
+//       const title=_.get(data, 'site.siteMetadata.title','Supergirls Notts');
+//       const description=_.get(data, 'site.siteMetadata.description','');
+
+//       return (
+//         <Body>
+//           <Helmet>
+//             <title>
+//               {title}
+//             </title>
+//             <link rel="canonical" href="http://supergirls-notts.co.uk" />
+//             <meta property="og:description" content={description}></meta>
+//             <meta name="description" content={description} />
+//             <meta property="og:title" content={title}></meta>
+//           </Helmet>
+//           <div className="header">
+//             <Header />
+//           </div>
+//           <div className="body">
+//             <div className="content">
+//               <div className="main">
+//                 {children}
+//               </div>
+//             </div>
+//             <div className="footer"><Footer /></div>
+//           </div>
+//         </Body>
+//       )
+//     }}
+//   />
+// );
 
 
 
