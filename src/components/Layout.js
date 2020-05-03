@@ -17,6 +17,12 @@ const Container = styled.div`
   }
 `;
 
+
+const BodyContainer = styled.div`
+  margin: 0 auto;
+  padding: ${props => props.full ? '0px' : '20px'};
+`;
+
 const Fixed = styled.div`
   width: 100%;
   position: fixed;
@@ -57,12 +63,14 @@ export default ({ children, full=false }) => (
           <nav>
             <MenuItem to="/">Music</MenuItem>
             <MenuItem to="/band">About The Band</MenuItem>
+            <MenuItem to="/albums">Albums</MenuItem>
           </nav>
       </Container>
     </FixedHeader>
-    <Container>
+    <BodyContainer {...{full}}>
+
       {children}
-    </Container>
+    </BodyContainer>
     <FixedFooter>
       <Container>Copyright &copy; 2016 Your Company</Container>
     </FixedFooter>

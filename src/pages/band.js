@@ -54,7 +54,6 @@ const Main = styled.div`
 // }
 
 const MemberView = styled.div`
-  padding:20px;
 `;
 
 const BandMember = ({name, img, description}) => (
@@ -73,7 +72,7 @@ const BandMember = ({name, img, description}) => (
 const Band = () => (
   <StaticQuery
   query={graphql`
-    query EventOverviewQuery {
+    query BandMemberQuery {
       allContentfulBandMember {
         edges {
           node {

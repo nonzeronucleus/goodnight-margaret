@@ -15,7 +15,6 @@ const Text = styled.div`
   text-align:start;
   font-size:60px;
   padding: 70px 0;
-  /* vertical-align: middle; */
   color:#0e89e0;
   font-family:'Poppins';
 
@@ -24,7 +23,6 @@ const Text = styled.div`
 
 
 const InnerDiv = styled.div`
-  /* position:absolute; */
   width:100%;
 
   top:0px;
@@ -32,15 +30,9 @@ const InnerDiv = styled.div`
 `;
 
 const StyledImage = styled(Img)`
-    /* filter: hue-rotate(deg) blur(4px); */
     opacity:0.8;
-    /* width:00px; */
-    /* height:100%; */
-    /* border:0px; */
     top:-80px;
     border-bottom:40px;
-    /* position: absolute; */
-
 `;
 
 
@@ -87,30 +79,5 @@ const IndexPage = () => {
    </Layout>
   )
 }
-
-// bandImage: file(relativePath: { eq: "band2.JPG" }) {
-//   childImageSharp {
-//     fluid(maxWidth: 300) {
-//       ...GatsbyImageSharpFluid
-//     }
-//   }
-// },
-
-
-
-const IndexPage2 = () => {
-
-  return <div>A</div>
-};
-
-
-// <StyledImage
-// Tag="section"
-// fluid={data.placeholderImage.childImageSharp.fluid}
-// backgroundColor={`#040e18`}
-// >
-// </StyledImage>
-// <BandName>Goodnight Margaret</BandName>
-
 
 export default IndexPage;
