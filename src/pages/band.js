@@ -2,23 +2,12 @@ import React from "react"
 import { StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash';
 import Layout from "../components/Layout";
-// import SEO from "../components/seo";
-import Img from "gatsby-image";
+import SEO from "../components/seo";
 import styled from 'styled-components';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import BandMember from '../components/BandMember';
 
 
-const Headshot = styled(Img)`
-    /* filter: hue-rotate(deg) blur(4px); */
-    /* opacity:0.8; */
-    /* width:00px; */
-    /* height:100%; */
-    /* border:0px; */
-    height:128px;
-    width:128px;
-    /* position: absolute; */
 
-`;
 
 const Content = styled.div`
   width:100%;
@@ -38,17 +27,6 @@ const Content = styled.div`
 `;
 
 
-const Sidebar = styled.div`
-  padding-top:20px;
-  /* background-color: red; */
-  width: 200px;
-`;
-
-const Main = styled.div`
-  /* background-color: blue; */
-  width:100%;
-`;
-
 // const Artist = () => {
 
 // }
@@ -56,24 +34,11 @@ const Main = styled.div`
 const MemberView = styled.div`
 `;
 
-const BandMember = ({name, img, description}) => (
-  <div>
-    <h2>{name}</h2>
-
-    <Headshot fluid={img}/>
-
-    {documentToReactComponents(description.json)}
-
-  </div>
-)
-
-
-
 const Band = () => (
   <StaticQuery
   query={graphql`
     query BandMemberQuery {
-      allContentfulBandMember {
+      allContentfulBandMember(sort: {order: ASC, fields: order}) {
         edges {
           node {
             id
@@ -99,12 +64,13 @@ const Band = () => (
 
     return (
       <Layout full={false}>
+        <SEO title="Band" />
         <MemberView>
         {
-          members.map(({node}) => {
+          members.map(({node}, row) => {
             const {name,description} = node;
             const img = node.photo.fluid;
-            return <BandMember {...{name, img, description}} key={name} />
+            return <BandMember {...{name, img, description,row}} key={name} />
           })
         }
         </MemberView>

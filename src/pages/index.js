@@ -33,6 +33,11 @@ const StyledImage = styled(Img)`
     opacity:0.8;
     top:-80px;
     border-bottom:40px;
+
+`;
+
+const Hero = styled(BackgroundImage)`
+background: radial-gradient(transparent 20%, white 70%);
 `;
 
 
