@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image';
@@ -22,25 +21,12 @@ const Text = styled.div`
 `;
 
 
-const InnerDiv = styled.div`
-  width:100%;
-
-  top:0px;
-  left:0px;
-`;
-
 const StyledImage = styled(Img)`
     opacity:0.8;
     top:-80px;
     border-bottom:40px;
 
 `;
-
-const Hero = styled(BackgroundImage)`
-background: radial-gradient(transparent 20%, white 70%);
-`;
-
-
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`

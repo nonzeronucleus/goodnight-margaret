@@ -1,7 +1,4 @@
 import React from "react"
-import _ from 'lodash';
-import Layout from "../components/Layout";
-// import SEO from "../components/seo";
 import Img from "gatsby-image";
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -103,7 +100,7 @@ const BandContent =  ({name, img, description,}) => (
 
 
 export default ({name, img, description,row}) => {
-    if (row % 2 == 0) {
+    if (row % 2 === 0) {
         return (
             <BandMemberEven>
                 <BandContent {...{name, img, description, row}}/>

@@ -7,30 +7,6 @@ import styled from 'styled-components';
 import BandMember from '../components/BandMember';
 
 
-
-
-const Content = styled.div`
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction: row;
-  /* text-align:center; */
-  /* font-size:200px; */
-  padding: 70px 0;
-  /* vertical-align: middle; */
-  color:#0e89e0;
-  /* position:relative; */
-
-  ul {
-    list-style-type: none;
-  }
-`;
-
-
-// const Artist = () => {
-
-// }
-
 const MemberView = styled.div`
 `;
 
