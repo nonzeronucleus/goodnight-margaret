@@ -14,6 +14,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                     }
                 }
             }
+            allContentfulTrack {
+              edges {
+                node {
+                  contentful_id
+                  trackName
+                  lyrics {
+                    json
+                  }
+                }
+              }
+            }
         }
       `
     )
@@ -35,5 +46,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id: node.contentful_id,
           },
         })
-    })
+    });
+
+    const trackTemplate = path.resolve(`src/templates/track.js`);
+
+    result.data.allContentfulTrack.edges.forEach(({ node }) => {
+        createPage({
+          path: `tracks/${node.trackName}`,
+          component: trackTemplate,
+          context: {
+              id: node.contentful_id,
+            },
+          })
+      })
   }

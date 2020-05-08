@@ -2,19 +2,17 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import _ from 'lodash';
 import Layout from '../components/Layout';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Link from 'gatsby-link';
 
 
-
-
-const AlbumView = ({albumName, tracks}) => (
+const AlbumView = ({albumName, tracks, location}) => (
     <div>
         <h2>{albumName}</h2>
         <ol>
         {
             tracks.map(({trackName})=>
-                <li key={trackName}>{trackName}</li>
+                <li key={trackName}><Link to={"/tracks/"+encodeURI(trackName)} state={{parent:location.pathname}}>{trackName}</Link></li>
             )
         }
         </ol>
@@ -22,14 +20,14 @@ const AlbumView = ({albumName, tracks}) => (
 )
 
 
-export default ({data}) => {
+export default ({data, location}) => {
     const {albumName, tracks}  = _.get(data, 'allContentfulAlbum.edges[0].node');
 
     // return <div>{JSON.stringify(node)}</div>
 
     // const {albumName, tracks} = _.get(data, 'allContentfulAlbum.edges.node');
 
-    return <Layout><Link to="/albums">Back</Link><AlbumView {...{albumName, tracks}} /></Layout>;
+    return <Layout><Link to="/albums">Back</Link><AlbumView {...{albumName, tracks,location}} /></Layout>;
 }
 
 export const query = graphql`
