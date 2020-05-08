@@ -5,12 +5,14 @@ import styled from 'styled-components';
 const headerSize = '60px;'
 
 const Page = styled.div`
-   padding-top: ${props => props.full ? '0px;' : headerSize};
+   /* padding-top: ${props => props.full ? '0px;' : headerSize}; */
    padding-bottom: 40px;
+   /* max-width:1024px; */
 `;
 
 const Container = styled.div`
   margin: 0 auto; /* Center the DIV horizontally */
+
 
   p {
         /* line-height: 200px; Create scrollbar to test positioning */
@@ -21,6 +23,7 @@ const Container = styled.div`
 const BodyContainer = styled.div`
   margin: 0 auto;
   padding: ${props => props.full ? '0px' : '20px'};
+  max-width: ${props => props.full ? '100%' : '1024px'};
 `;
 
 const Fixed = styled.div`
@@ -41,6 +44,24 @@ const FixedHeader = styled(Fixed)`
 
 `;
 
+
+const NotFixedHeader = styled.div`
+  width: 100%;
+  /* position: fixed; */
+  padding: 10px 0;
+
+  top: 0;
+  z-index:10;
+  opacity: 0;
+  height:headerSize;
+  font-family:'Pacifico';
+  font-size:30px;
+  /* background-color: ${props => props.full ? '#333' : '#5c5c5c'};
+  color: ${props => props.full ? '#333' : '#5c5c5c'}; */
+
+`;
+
+
 const FixedFooter = styled(Fixed)`
   bottom: 0;
   color: #fff;
@@ -56,6 +77,17 @@ const MenuItem = styled(Link)`
     }
 `;
 
+const Contentful = styled.a`
+  margin-top:5px;
+  float:right;
+  margin-right:10px;
+  > img {
+    width:100px;
+    margin-bottom:0px;
+  }
+
+`;
+
 export default ({ children, full=false }) => (
   <Page full={full}>
     <FixedHeader full={full}>
@@ -67,12 +99,33 @@ export default ({ children, full=false }) => (
           </nav>
       </Container>
     </FixedHeader>
+
+      {!full &&
+
+        <NotFixedHeader full={full}>
+        <Container>
+            <nav>
+              <MenuItem to="/">Music</MenuItem>
+              <MenuItem to="/band">About The Band</MenuItem>
+              <MenuItem to="/albums">Albums</MenuItem>
+            </nav>
+        </Container>
+      </NotFixedHeader>}
+
+
+
     <BodyContainer {...{full}}>
 
       {children}
     </BodyContainer>
     <FixedFooter>
-      <Container>Copyright &copy; 2016 Your Company</Container>
+      <Container>Copyright &copy; 2020 Goodnight Margaret
+      <Contentful href='https://www.contentful.com/' rel='nofollow' target='_blank' > <img
+      src='https://images.ctfassets.net/fo9twyrwpveg/7F5pMEOhJ6Y2WukCa2cYws/398e290725ef2d3b3f0f5a73ae8401d6/PoweredByContentful_DarkBackground.svg'
+      alt='Powered by Contentful' />
+    </Contentful>
+    </Container>
+
     </FixedFooter>
   </Page>
 )

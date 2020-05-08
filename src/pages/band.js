@@ -25,6 +25,7 @@ const Band = () => (
             photo {
               fluid(maxHeight: 128, sizes: "") {
                 src
+                sizes
                 srcSet
                 aspectRatio
                 base64
