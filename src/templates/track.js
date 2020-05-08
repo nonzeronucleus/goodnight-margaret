@@ -15,10 +15,11 @@ const MainText = styled.div`
     /* background-color:blue; */
     padding:10px;
     font-size:14px;
-    line-height:14px;
 
     > p {
-        margin-bottom:10px;
+        padding-bottom:10px;
+        margin-bottom:0px;
+        line-height:10px;
     }
 
     > blockquote {

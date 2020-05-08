@@ -88,28 +88,27 @@ const Contentful = styled.a`
 
 `;
 
+
+const Menu = () => (
+  <Container>
+    <nav>
+      <MenuItem to="/">Home</MenuItem>
+      <MenuItem to="/band">About The Band</MenuItem>
+      <MenuItem to="/albums">Albums</MenuItem>
+      <MenuItem to="/margipedia">Margipedia</MenuItem>
+    </nav>
+  </Container>
+)
+
 export default ({ children, full=false }) => (
   <Page full={full}>
     <FixedHeader full={full}>
-      <Container>
-          <nav>
-            <MenuItem to="/">Music</MenuItem>
-            <MenuItem to="/band">About The Band</MenuItem>
-            <MenuItem to="/albums">Albums</MenuItem>
-          </nav>
-      </Container>
+      <Menu />
     </FixedHeader>
 
       {!full &&
-
         <NotFixedHeader full={full}>
-        <Container>
-            <nav>
-              <MenuItem to="/">Music</MenuItem>
-              <MenuItem to="/band">About The Band</MenuItem>
-              <MenuItem to="/albums">Albums</MenuItem>
-            </nav>
-        </Container>
+          <Menu />
       </NotFixedHeader>}
 
 
