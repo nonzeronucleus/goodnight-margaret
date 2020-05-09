@@ -1,7 +1,9 @@
 import React from "react"
 import Img from "gatsby-image";
 import styled from 'styled-components';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import RichText from '../components/RichText';
+import Link from 'gatsby-link';
+
 
 
 
@@ -44,20 +46,6 @@ const TitleSection = styled.div`
     }
 `;
 
-const MainText = styled.div`
-
-    font-size:20px;
-    grid-area: main;
-
-    /* background-color:blue; */
-    padding:10px;
-    font-size:14px;
-
-    > p {
-        margin-bottom:10px;
-    }
-`;
-
 const HeadshotSection = styled.div`
     grid-area: image;
 
@@ -90,11 +78,11 @@ const BandContent =  ({name, img, description,}) => (
         </TitleSection>
 
         <HeadshotSection>
-            <Headshot fluid={img}/>
+            <Link to = {"/person/"+name} >
+                <Headshot fluid={img}/>
+            </Link>
         </HeadshotSection>
-        <MainText>
-            {documentToReactComponents(description.json)}
-        </MainText>
+        <RichText text={description} />
     </>
 )
 

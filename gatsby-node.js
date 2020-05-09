@@ -25,6 +25,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 }
               }
             }
+            allContentfulBandMember {
+              edges {
+                node {
+                  personalDescription {
+                    json
+                  }
+                  name
+                  contentful_id
+                }
+              }
+            }
         }
       `
     )
@@ -59,4 +70,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             },
           })
       })
-  }
+
+      const personTemplate = path.resolve(`src/templates/person.js`);
+
+      result.data.allContentfulBandMember.edges.forEach(({ node }) => {
+          createPage({
+            path: `person/${node.name}`,
+            component: personTemplate,
+            context: {
+                id: node.contentful_id,
+              },
+            })
+        })
+}

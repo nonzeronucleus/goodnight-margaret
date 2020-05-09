@@ -55,8 +55,6 @@ const IndexPage = () => {
         fluid={data.bandImage.childImageSharp.fluid}
         >
 
-        {console.log(data.logo.childImageSharp.fluid)}
-
         <StyledImage
           Tag="section"
           fluid={data.logo.childImageSharp.fluid}
