@@ -1,8 +1,40 @@
 import React from 'react';
-import _ from 'lodash';
 import styled from 'styled-components';
+import _ from 'lodash';
+import { BLOCKS } from '@contentful/rich-text-types';
+import useContentfulImage from '../hooks/useContentfulImage';
+import Img from "gatsby-image";
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+
+
+const EmbeddedImage = styled(Img)`
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
+    /* opacity:0.8; */
+    /* width:00px; */
+    /* height:100%; */
+    /* border:0px; */
+    height:512px;
+    width:512px;
+    /* position: absolute; */
+
+`;
+
+const options = {
+    renderNode: {
+      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
+        const id = _.get(node, 'data.target.sys.contentful_id');
+
+        const fluid = useContentfulImage(
+          id
+        );
+        return (
+          <EmbeddedImage fluid={fluid} />
+        )
+      }
+    }
+  };
 
 
 const RichText = styled.div`
@@ -46,6 +78,6 @@ const RichText = styled.div`
 
 export default ({text}) => {
     return <RichText>
-        {text && documentToReactComponents(text.json)}
+        {text && documentToReactComponents(text.json, options)}
     </RichText>
 }

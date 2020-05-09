@@ -3,46 +3,9 @@ import { StaticQuery, graphql } from 'gatsby'
 import _ from 'lodash';
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
-import styled from 'styled-components';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
-import useContentfulImage from '../hooks/useContentfulImage';
-import Img from "gatsby-image";
+import RichText from '../components/RichText';
 
 
-const MemberView = styled.div`
-`;
-
-
-
-const EmbeddedImage = styled(Img)`
-    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
-    /* opacity:0.8; */
-    /* width:00px; */
-    /* height:100%; */
-    /* border:0px; */
-    height:512px;
-    width:512px;
-    /* position: absolute; */
-
-`;
-
-const options = {
-    renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
-        const id = _.get(node, 'data.target.sys.contentful_id');
-
-        const fluid = useContentfulImage(
-          //node.data.target.fields.file["en-US"].url
-          id
-        );
-        return (
-          // <div>{JSON.stringify(id)}</div>
-          <EmbeddedImage fluid={fluid} />
-        )
-      }
-    }
-  };
 
 const Band = () => (
   <StaticQuery
@@ -70,9 +33,7 @@ const Band = () => (
       <Layout full={false}>
         <SEO title="Margipedia" />
         <h2>{entryName}</h2>
-        <MemberView>
-            {documentToReactComponents(body.json, options)}
-        </MemberView>
+        <RichText text={body} />
       </Layout>
     );
   }}

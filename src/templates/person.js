@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import _ from 'lodash';
 import Layout from '../components/Layout';
-import Link from 'gatsby-link';
 import RichText from '../components/RichText';
 
 
