@@ -85,7 +85,10 @@ const Contentful = styled.a`
     width:100px;
     margin-bottom:0px;
   }
+`;
 
+const Small = styled.span`
+  font-size:8px;
 `;
 
 
@@ -96,6 +99,7 @@ const Menu = () => (
       <MenuItem to="/band">About The Band</MenuItem>
       <MenuItem to="/albums">Albums</MenuItem>
       <MenuItem to="/margipedia">Margipedia</MenuItem>
+      <MenuItem to="/merch">Merch<Small>andise</Small></MenuItem>
     </nav>
   </Container>
 )

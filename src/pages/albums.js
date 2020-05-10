@@ -9,22 +9,14 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Img from "gatsby-image";
 
-
-
 const CoverArt = styled(Img)`
 
     :hover {
         filter: grayscale(100%);
     }
     box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
-    /* opacity:0.8; */
-    /* width:00px; */
-    /* height:100%; */
-    /* border:0px; */
     height:320px;
     width:320px;
-    /* position: absolute; */
-
 `;
 
 const MainText = styled.div`
@@ -74,17 +66,6 @@ const AlbumView = ({albumName, img, description}) => (
 
     </div>
 )
-
-// <ol>
-// {
-//     tracks.map(({trackName})=>
-//         <li key={trackName}>{trackName}</li>
-//     )
-// }
-// </ol>
-
-
-
 
 export default () => (
     <StaticQuery
