@@ -28,6 +28,20 @@ const StyledImage = styled(Img)`
 
 `;
 
+const Hero = ({data}) => (
+  <BackgroundImage
+  fluid={data.bandImage.childImageSharp.fluid}
+  >
+
+  <StyledImage
+    Tag="section"
+    fluid={data.logo.childImageSharp.fluid}
+    backgroundColor={`#040e18`}
+  >
+  </StyledImage>
+</BackgroundImage>
+)
+
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -49,19 +63,8 @@ const IndexPage = () => {
       }
   `)
     return (
-    <Layout full={true}>
+    <Layout hero={<Hero {...{data}} />} full={true}>
       <SEO title="Home" />
-      <BackgroundImage
-        fluid={data.bandImage.childImageSharp.fluid}
-        >
-
-        <StyledImage
-          Tag="section"
-          fluid={data.logo.childImageSharp.fluid}
-          backgroundColor={`#040e18`}
-        >
-        </StyledImage>
-      </BackgroundImage>
       <Text>
       Goodnight Margaret are a British rock band, formed in Nottingham in 2020. They have sold no records worldwide, making them one of the world's least-selling bands.
       </Text>
