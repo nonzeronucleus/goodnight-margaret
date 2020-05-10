@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import breakpoints from '../consts/breakpoints';
 
 const headerSize = '60px;'
 
@@ -64,6 +65,9 @@ const NotFixedHeader = styled.div`
 
 const FixedFooter = styled(Fixed)`
   bottom: 0;
+  @media only screen and (max-width: ${breakpoints.mobile}) {
+    font-size: 12px;
+  }
   color: #fff;
 
 `;
@@ -83,6 +87,9 @@ const Contentful = styled.a`
   margin-right:10px;
   > img {
     width:100px;
+    @media only screen and (max-width: ${breakpoints.mobile}) {
+      width:50px;
+    }
     margin-bottom:0px;
   }
 `;
