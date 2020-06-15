@@ -100,8 +100,10 @@ jobs:
             - run:
                 name: Deploy to S3
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
+
             - slack/status:
-                webhook: https://hooks.slack.com/services/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
+                fail_only: false
+                webhook: ${SLACK_WEBHOOK}
 
 #            - run:
 #                name: Enable preview
