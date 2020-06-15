@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
     #need separate build step to accept calls from contentful webhook
     build:
