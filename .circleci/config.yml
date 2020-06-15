@@ -101,10 +101,9 @@ jobs:
                 name: Deploy to S3
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
 
-            - slack/status:
-                only_for_branches: 'master'
-                webhook: '${SLACK_WEBHOOK}'
-
+            - slack/notify:
+                color: '#42e2f4'
+                message: This is a custom message notification
 #            - run:
 #                name: Enable preview
 #                command: aws configure set preview.cloudfront true
