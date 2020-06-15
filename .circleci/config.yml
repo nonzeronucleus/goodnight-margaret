@@ -102,7 +102,7 @@ jobs:
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
 
             - slack/status:
-                only_for_branches: 'develop'
+                only_for_branches: 'master'
                 webhook: '${SLACK_WEBHOOK}'
 
 #            - run:
