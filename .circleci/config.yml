@@ -101,8 +101,8 @@ jobs:
                 name: Deploy to S3
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
             - slack/status:
-                webhook: '${SLACK_WEBHOOK}'
-
+                message: Pending approval
+                webhook: webhook
 #            - run:
 #                name: Enable preview
 #                command: aws configure set preview.cloudfront true
