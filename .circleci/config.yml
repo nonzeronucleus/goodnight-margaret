@@ -102,7 +102,7 @@ jobs:
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
 
             - slack/status:
-                webhook: webhook
+                webhook: ${SLACK_WEBHOOK}
 #            - run:
 #                name: Enable preview
 #                command: aws configure set preview.cloudfront true
