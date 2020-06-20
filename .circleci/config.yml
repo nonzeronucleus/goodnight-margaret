@@ -7,8 +7,6 @@ jobs:
 
 
     deploy:
-        requires:
-            build
         docker:
             - image: circleci/node:lts
 
