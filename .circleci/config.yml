@@ -4,6 +4,40 @@ orbs:
 
 jobs:
     #need separate build step to accept calls from contentful webhook
+
+
+    deploy:
+        requires:
+            build
+        docker:
+            - image: circleci/node:lts
+
+        working_directory: ~/repo
+
+        steps:
+            - attach_workspace:
+                at: ~/repo
+
+            - run:
+                name: Install aws cli
+                command: sudo apt-get -y -qq install awscli
+
+            - run:
+                name: Deploy to S3
+                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
+
+            - slack/status:
+                webhook: ${SLACK_WEBHOOK}
+#            - run:
+#                name: Enable preview
+#                command: aws configure set preview.cloudfront true
+
+#                name: Invalidate
+#            - run:
+#                command: aws cloudfront create-invalidation --distribution-id EMIX0KMQZU09H --paths /*
+
+
+
     build:
         docker:
             - image: circleci/node:lts
@@ -82,34 +116,6 @@ jobs:
                 # Must be relative path from root
                 paths:
                     - public
-
-    deploy:
-        docker:
-            - image: circleci/node:lts
-
-        working_directory: ~/repo
-
-        steps:
-            - attach_workspace:
-                at: ~/repo
-
-            - run:
-                name: Install aws cli
-                command: sudo apt-get -y -qq install awscli
-
-            - run:
-                name: Deploy to S3
-                command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
-
-            - slack/status:
-                webhook: ${SLACK_WEBHOOK}
-#            - run:
-#                name: Enable preview
-#                command: aws configure set preview.cloudfront true
-
-#                name: Invalidate
-#            - run:
-#                command: aws cloudfront create-invalidation --distribution-id EMIX0KMQZU09H --paths /*
 
 
     deploy-dev:
