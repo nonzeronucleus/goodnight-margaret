@@ -74,9 +74,8 @@ jobs:
             - run:
                 name: Deploy main to S3
                 command: aws s3 sync public s3://goodnight-margaret.ianplumb.uk --delete
-
-            - slack/notify:
-                webhook: ${SLACK_WEBHOOK}
+            - run:
+                command: slack notify --webhook ${SLACK_WEBHOOK}
 
 
     build-only:
